@@ -1,0 +1,39 @@
+<html layout:decorate="~{layout}">
+	
+	<div layout:fragment="content" class="container my-3">
+		<table class="table">
+			<thead class="table-dark">
+				<tr>
+					<th>회원코드</th>
+					<th>아이디</th>
+					<th>이름</th>
+					<th>이메일</th>
+					<th>전화번호</th>
+					<th>주소</th>
+					<th>사용가능시간</th>
+					<th>회원등급</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="member : ${memberEntity}">
+					<td th:text="${member.memberCode}"></td>
+					<td th:text="${member.memberId}"></td>
+					<td th:text="${member.name}"></td>
+					<td th:text="${member.email}"></td>
+					<td th:text="${member.phone}"></td>
+					<td th:text="${member.addr}"></td>
+					<td th:text="${member.availableTime}"></td>
+					<td th:text="일반회원" th:if="${member.grade == 1}"></td>
+					<td th:text="관리자" th:unless="${member.grade == 1}"></td>
+				</tr>
+			</tbody>
+		</table>
+		
+	<a th:href="@{/member/list}" class="btn btn-primary">이전화면</a>
+		
+	</div>
+</html>
+
+
+
+
